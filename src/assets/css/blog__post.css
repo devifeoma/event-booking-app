@@ -1,0 +1,165 @@
+/* import external fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+/* import external css files */
+@import url(./header.css);
+@import url(./footer.css);
+
+.article {
+    padding: 30px;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 5rem;
+}
+
+.article__title {
+    color: #333333;
+    font-size: 35px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    margin-top: -25px;
+    margin-bottom: 20px;
+    text-align: start;
+}
+
+.author__img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.article p{
+    position: relative;
+    display: block;
+    color: #333333;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6em;
+    font-weight: 300;
+    margin: 3rem 0 2rem 0px;
+    text-align: justify;
+}
+
+.article__qoute {
+    font-size: 20px;
+    padding-left: 10px;
+    border-left: 4px solid #333333;
+}
+
+.author__details {
+    display: grid;
+	grid-template-columns: 5fr 5fr;
+    gap: 10px;
+    padding: 24px;
+}
+
+.author__card p {
+    color: #777373;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.author__card {
+	padding: 0;
+	display: grid;
+	grid-template-columns: 1fr 9fr;
+	gap: 10px;
+}
+
+.author__card img {
+    width: 50px;
+    height: 50px;
+	border-radius: 50%;
+}
+
+.author__bio h3 {
+	color: #333333;
+	margin-top: 3px;
+	font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+}
+
+.article__image {
+    height: 100%;
+    width: 100%;
+}
+
+.article__sub__title h1 {
+    margin-top: 35px;
+    color: #333333;
+    font-size: 30px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    text-align: start;
+}
+
+.underline {
+	text-decoration:underline;
+}
+.italics {
+	font-style: italic;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.link {
+    color: #ffdb3a;;
+}
+
+.conclusion {
+    color: #333333;
+    font-size: 30px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    text-align: start;
+}
+
+.social__share {
+    margin-top: 4rem;
+    
+}
+
+.social__share ul li {
+    display: inline-block;
+    list-style: none;
+    padding-left: 1px;
+    padding: 10px;
+}
+.social__icon a img {
+    margin-bottom: 10px;
+    height: 35px;
+    width: 35px;
+}
+
+.social__icon__design {
+    height: 30px;
+    width: 30px;
+}
+
+.blog__post__footer {
+    margin-left: 0;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background: #f2f2f2;
+    box-shadow: 0px 3px 50px #0000001f;
+}
+
+.blog__post__footer p{
+    text-align: center;
+    color: #333333;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+
+/* Media Query */
+@media (max-width: 768px) {
+    .article {
+        padding: 30px;
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 5rem;
+    }
+}
