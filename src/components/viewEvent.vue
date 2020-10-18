@@ -1,149 +1,148 @@
 <template>
   <div>
-    <article class="article">
-      <!-- <h1 class="article__title">
-        Top 6 tips you should know as a Javascript developer
-      </h1> -->
-      <!-- <div class="author__card">
-        <img src="../assets/img/code.jpg" alt="author" />
-        <div class="author__bio">
-          <h3>Judith Ifeoma Nwokike</h3>
-          <p><cite>Front End Developer</cite></p>
-          <p><cite>Nov. 30, 2019</cite></p>
-        </div>
-      </div> -->
-      <figure>
-        <img
-          src="../assets/img/angular.png"
-          class="article__image"
-          alt="angular__image"
-        />
-      </figure>
+    <top-bar></top-bar>
 
-      <div class="book">
-        <div class="event__description">
-          <h2>About this event</h2>
+    <section class="container">
+      <div class="left-half">
+        <figure>
+          <img
+            :src="singleEvent.images[0].url"
+            :alt="singleEvent.name"
+            class="single__img"
+          />
+        </figure>
+      </div>
+
+      <div class="right-half">
+        <article>
+          <h1>{{ singleEvent.name }}</h1>
           <p>
-            Lorem ipsum dolor sit amet,
-            <b>Lorem ipsum dolor sit amet, incididunt ut</b> labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-            irure dolor in reprehenderit in voluptate velit esse cillum dolore
-
-            <span class="underline"
-              >dolor sit amet, incididunt ut labore Lorem ipsum dolor sit amet,
-              Lorem ipsum dolor sit amet, incididunt ut labore</span
-            >
+            {{ singleEvent.info }}
           </p>
-        </div>
-
-        <div class="pay__div">
-          <h5 class="article__title">
-            Top 6 tips you should
-          </h5>
-          <!-- <p>
-            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum. qui officia deserunt mollit anim id est laborum Lorem ipsum
-            dolor sit amet, Lorem ipsum dolor sit amet, incididunt ut labore
-            Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, incididunt
-            ut labore Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet,
-            incididunt ut labore Lorem ipsum dolor sit amet, Lorem ipsum
-          </p> -->
-          <button class="book__event" @click="payWithRave">Book Event</button>
-        </div>
+          <button class="book__event" @click="showModal">Register</button>
+          <modal
+            v-show="isModalVisible"
+            @close="closeModal"
+            v-bind:event="singleEvent"
+          />
+        </article>
       </div>
-
-      <div class="social__share">
-        <ul>
-          <li class="social__icon">
-            <a href="#"
-              ><img
-                src="../assets/img/linkedin-square.png"
-                alt="linkedin"
-                class="social__icon__design"
-            /></a>
-          </li>
-          <li class="social__icon">
-            <a href="#"
-              ><img
-                src="../assets/img/twitter-square.png"
-                alt="twitter"
-                class="social__icon__design"
-            /></a>
-          </li>
-          <li class="social__icon">
-            <a href="#"
-              ><img
-                src="../assets/img/facebook-sqaure.png"
-                alt="facebook"
-                class="social__icon__design"
-            /></a>
-          </li>
-        </ul>
-      </div>
-    </article>
+    </section>
+    <!-- <event-footer></event-footer> -->
   </div>
 </template>
 
 <script>
+import topBar from "../components/topBar";
+// import eventFooter from "../components/eventFooter";
+import modal from "../components/modal.vue";
+import axios from "axios";
 export default {
+  components: {
+    topBar,
+    // eventFooter,
+    modal,
+  },
   data() {
     return {
-      API_publicKey: "FLWPUBK_TEST-11a8d0aa19dfbe93e9935230997e57ad-X",
+      apikey: "i20KpdOahHdtS7UAxtXvnETRKnkAyfgj",
+      singleEvent: [],
+      isModalVisible: false,
     };
   },
-  //   mounted() {
-  //     this.viewEvent();
-  //   },
+
+  mounted() {
+    this.fetchSingleEvent(this.$route.params.id);
+  },
 
   methods: {
-    payWithRave() {
-      var x = getpaidSetup({
-        PBFPubKey: this.API_publicKey,
-        customer_email: "judithcynthia1@gmail.com",
-        customer_name: "Judith",
-        amount: 1000,
-        // customer_phone: "234099940409",
-        currency: "NGN",
-        txref: "rave-123456",
-        payment_plan: 5178,
-        // subaccounts: [
-        // {
-        //   id: "RS_B324291E4892B64A9CE1B1DE77DFE84B",
-        //   id: "RS_51A6BCC4D3B924A6B6C241D0A15D615A"
-        // }
-        // ],
-        meta: [
-          {
-            metaname: "flightID",
-            metavalue: "AP1234",
-          },
-        ],
-        onclose: function() {},
-        callback: function(response) {
-          var txref = response.tx.txRef; // collect flwRef returned and pass to a server page to complete status check.
-          console.log("This is the response returned after a charge", response);
-          if (
-            response.tx.chargeResponseCode == "00" ||
-            response.tx.chargeResponseCode == "0"
-          ) {
-            // redirect to a success page
-          } else {
-            // redirect to a failure page.
-          }
-
-          x.close(); // use this to close the modal immediately after payment.
-        },
-      });
+    start() {
+      this.$Progress.start();
+    },
+    finish() {
+      this.$Progress.finish();
+    },
+    fail() {
+      this.$Progress.fail();
+    },
+    fetchSingleEvent(id) {
+      this.$Progress.start();
+      axios
+        .get(
+          `https://app.ticketmaster.com/discovery/v2/events/${id}.json?apikey=${this.apikey}`
+        )
+        .then((res) => {
+          this.$Progress.finish();
+          console.log(res);
+          this.singleEvent = res.data;
+        })
+        .catch((error) => {
+          this.$Progress.fail();
+          console.log(error);
+        });
     },
 
-    
+    truncateString(str, num) {
+      if (!str) {
+        return false;
+      }
+
+      if (str.length <= num) {
+        return str;
+      }
+
+      return str.slice(0, num) + "...";
+    },
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    },
   },
 };
 </script>
 
 <style>
+/* div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} */
+
+.container {
+  display: flex;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  margin-top: 100px;
+}
+
+.left-half {
+  /* background-color: #ff9e2c; */
+  flex: 1;
+  /* padding: 1rem; */
+}
+
+.right-half {
+  /* background-color: #b6701e; */
+  flex: 1;
+  padding: 30px 0 0 30px;
+}
+
+.single__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+article h1 {
+  margin-bottom: 40px;
+}
+
+article p {
+  margin-bottom: 40px;
+}
+
 .book {
   display: flex;
   /* justify-content: space-around; */

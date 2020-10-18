@@ -1,11 +1,10 @@
 <template>
   <!-- Footer -->
   <footer class="footer">
-    <p>@2020</p>
+    <p>@{{ new Date().getFullYear() }}</p>
   </footer>
 </template>
 
 <script>
 export default {};
 </script>
-

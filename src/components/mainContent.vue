@@ -4,12 +4,7 @@
     <div class="main__post">
       <div class="card" v-for="event in events" :key="event.id">
         <div class="event__image">
-          <img :src="event.images.url" :alt="event.name">
-          <!-- <img
-            src="../assets/img/angular.png"
-            style="width:
-                            150px; height: 150px; border-radius: 20px;"
-          /> -->
+          <img :src="event.images[0].url" :alt="event.name" />
         </div>
         <div class="event__description">
           <span style="color: red; margin-bottom: 10px;"
@@ -21,13 +16,13 @@
             </router-link>
           </h3>
           <p>
-            Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, incididunt
-            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-            nostrud exercitation anim id est laborum. ...
-             <!-- {{event.info}} -->
+            {{
+              truncateString(event.info, 30) ||
+                "Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, incididu ut labore et"
+            }}
           </p>
           <div class="main__content__price">
-            <span>{{ event.priceRanges }}</span>
+            <span>{{event.priceRanges}}</span>
           </div>
         </div>
       </div>
@@ -94,11 +89,11 @@ export default {
   },
 
   mounted() {
-    this.fetchEvent();
+    this.fetchEvents();
   },
 
   methods: {
-    fetchEvent() {
+    fetchEvents() {
       axios
         .get(
           "https://app.ticketmaster.com/discovery/v2/events?apikey=j3NtHIoBfApjHU0wjFnjENfU3VNu9K3i&keyword=Tech&locale=en&size=50&countryCode=US"
@@ -110,6 +105,18 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+
+    truncateString(str, num) {
+      if (!str) {
+        return false;
+      }
+
+      if (str.length <= num) {
+        return str;
+      }
+
+      return str.slice(0, num) + "...";
     },
   },
 };
