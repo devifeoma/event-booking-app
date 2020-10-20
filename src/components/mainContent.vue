@@ -40,29 +40,31 @@
                         </a>
                     </div> -->
         <div class="post__content__herder">
-          <a href="#" class="post__title"
+          <!-- <a href="#" class="post__title"
             >Top 6 tips you should know as a Javascript developer</a
-          >
+          > -->
+          <!-- {{event.products.name}} -->
         </div>
       </div>
 
       <div class="post__content">
-        <div>
+        <!-- <div>
           <a href="#" class="post__content__image">
             <img src="assets/img/angular.png" alt="image" />
+               <img :src="event.images[0].url" :alt="event.name" />
           </a>
-        </div>
+        </div> -->
         <div class="post__content__herder">
           <a href="#" class="post__title">Creating your app with Angular</a>
         </div>
       </div>
 
       <div class="post__content">
-        <div>
+        <!-- <div>
           <a href="#" class="post__content__image">
             <img src="assets/img/javascript.png" alt="image" />
           </a>
-        </div>
+        </div> -->
         <div class="post__content__herder">
           <a href="#" class="post__title">JavaScript for Newbie</a>
         </div>

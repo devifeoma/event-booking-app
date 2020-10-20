@@ -17,7 +17,7 @@
         <article>
           <h1>{{ singleEvent.name }}</h1>
           <p>
-            {{ singleEvent.info }}
+            {{ singleEvent.info }}. {{singleEvent.pleaseNote}}
           </p>
           <button class="book__event" @click="showModal">Register</button>
           <modal
@@ -160,7 +160,7 @@ article p {
 .book__event {
   padding: 15px 60px;
   color: #ffffff;
-  background-color: green;
+  background-color: #f5a623;
   border: none;
   border-radius: 4px;
   font-size: 18px;

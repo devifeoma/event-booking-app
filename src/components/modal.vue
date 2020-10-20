@@ -114,6 +114,7 @@ export default {
             response.data.chargeResponseCode == "0"
           ) {
             // redirect to a success page
+            this.$router.push("mainContent");
           } else {
             // redirect to a failure page.
           }
