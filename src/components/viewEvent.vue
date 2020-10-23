@@ -66,7 +66,8 @@
         <span
           style=" margin-bottom: 15px; font-family: FLW-bold-italic; font-size: 22px; color: #333333;"
           ><cite>{{
-            singleEvent.dates.start.dateTime | moment("dddd, MMMM Do YYYY")
+            singleEvent.dates.start.dateTime
+              | moment("dddd, MMMM Do YYYY, h:mm:ss a")
           }}</cite></span
         >
         <div class="social__share">
@@ -185,7 +186,7 @@ export default {
   display: flex;
   padding-left: 10rem;
   padding-right: 10rem;
-  margin-top: 100px;
+  margin-top: 120px;
 }
 
 .second__container {

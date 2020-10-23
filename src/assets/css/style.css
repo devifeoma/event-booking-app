@@ -83,7 +83,7 @@ body {
 .card h3 a {
   color: #333333;
   /* font-family: "Open Sans", sans-serif; */
-    font-family: FLW-Regular;
+  font-family: FLW-Regular;
   font-weight: 800;
 }
 
@@ -397,4 +397,5 @@ body {
   margin-top: 40px;
   color: red;
   font-size: 17px;
+  font-family: FLW-Regular;
 }

@@ -7,9 +7,11 @@
           <img :src="event.images[0].url" :alt="event.name" />
         </div>
         <div class="event__description">
-          <span style="color: red; margin-bottom: 10px;"
+          <span
+            style="color: red; margin-bottom: 10px; font-family: FLW-Regular"
             ><cite>{{
-              event.dates.start.dateTime | moment("dddd, MMMM Do YYYY")
+              event.dates.start.dateTime
+                | moment("dddd, MMMM Do YYYY, h:mm:ss a")
             }}</cite></span
           >
           <h3>
@@ -29,19 +31,26 @@
               $
               {{
                 event.priceRanges && event.priceRanges.length >= 0
-                  ? event.priceRanges[0].max
+                  ? event.priceRanges[0].min
                   : ""
               }}
               - $
               {{
                 event.priceRanges && event.priceRanges.length >= 0
-                  ? event.priceRanges[0].min
+                  ? event.priceRanges[0].max
                   : "Free"
               }}</span
             >
           </div>
         </div>
       </div>
+      <button
+        class="load__more"
+        @click="loadMore"
+        v-if="currentPage * maxPerPage < events.length"
+      >
+        Load more
+      </button>
     </div>
 
     <!-- Fixed Post -->
@@ -103,6 +112,8 @@ export default {
   data() {
     return {
       events: [],
+      currentPage: 1,
+      maxPerPage: 3,
     };
   },
 
@@ -111,6 +122,9 @@ export default {
   },
 
   methods: {
+    loadMore() {
+      this.currentPage += 1;
+    },
     getMax(array) {
       return array.priceRanges && array.priceRanges.length;
     },
@@ -142,3 +156,16 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.load__more {
+  padding: 15px 30px;
+  color: #ffffff;
+  background-color: #f5a623;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  margin: 0 auto;
+  display: block;
+}
+</style>
