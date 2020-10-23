@@ -3,13 +3,15 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "../src/assets/css/style.css";
-import VueProgressBar from "vue-progressbar";
+// import VueProgressBar from "vue-progressbar";
 
-Vue.use(VueProgressBar, {
-  color: "white",
-  failedColor: "blue",
-  height: "5px",
-});
+// Vue.use(VueProgressBar, {
+//   color: "white",
+//   failedColor: "blue",
+//   height: "5px",
+// });
+
+Vue.use(require("vue-moment"));
 
 Vue.config.productionTip = false;
 

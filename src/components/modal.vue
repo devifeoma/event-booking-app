@@ -41,12 +41,11 @@
                 <option>5</option>
                 <option>6</option>
               </select>
-              <input type="email" v-model="email" />
+              <!-- <input type="email" v-model="email" /> -->
             </div>
 
             <p>
-              Sales end on Oct 22, 2020 A link to the virtual event will be
-              included in your confirmation email and also re-sent on 8/24.
+              {{ event.pleaseNote }}
             </p>
 
             <!-- <button type="button" class="checkout">Checkout</button> -->
@@ -81,7 +80,7 @@ export default {
   data() {
     return {
       quantity: 0,
-      email: "",
+      // email: "",
       price: "",
       API_publicKey: "FLWPUBK_TEST-11a8d0aa19dfbe93e9935230997e57ad-X",
     };
@@ -94,7 +93,8 @@ export default {
       var x = window.getpaidSetup({
         PBFPubKey: this.API_publicKey,
         txref: "rave-123456",
-        customer_email: this.email,
+        // customer_email: this.email,
+        customer_email: "judith@gmail.com",
         amount: this.price,
         customer_phone: "234099940409",
         currency: "NGN",

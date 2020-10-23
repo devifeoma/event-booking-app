@@ -1,3 +1,38 @@
+/* Flutterwave Font */
+
+@font-face {
+  font-family: "Flutterwave";
+  src: url(../fonts/Flutterwave/OpenType-TT/Flutterwave-Black.ttf)
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Flw-black-italic";
+  src: url(../fonts/Flutterwave/OpenType-TT/FLW-Black-Italic.ttf)
+    format("truetype");
+}
+
+@font-face {
+  font-family: "FLW-Bold-Italic";
+  src: url(../fonts/Flutterwave/OpenType-TT/FLW-Bold-Italic.ttf)
+    format("truetype");
+}
+
+@font-face {
+  font-family: "FLW-Bold";
+  src: url(../fonts/Flutterwave/OpenType-TT/FLW-Bold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "FLW-Regular";
+  src: url(../fonts/Flutterwave/OpenType-TT/FLW-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "FLW-Italic";
+  src: url(../fonts/Flutterwave/OpenType-TT/FLW-Italic.ttf) format("truetype");
+}
+
 /* import external fonts */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
@@ -47,7 +82,8 @@ body {
 
 .card h3 a {
   color: #333333;
-  font-family: "Open Sans", sans-serif;
+  /* font-family: "Open Sans", sans-serif; */
+    font-family: FLW-Regular;
   font-weight: 800;
 }
 
@@ -300,7 +336,7 @@ body {
   text-align: start;
 }
 
-.social__share {
+/* .social__share {
   margin-top: 4rem;
 }
 
@@ -319,7 +355,7 @@ body {
 .social__icon__design {
   height: 30px;
   width: 30px;
-}
+} */
 
 .blog__post__footer {
   margin-left: 0;
@@ -358,6 +394,7 @@ body {
 .main__content__price {
   display: flex;
   justify-content: flex-end;
+  margin-top: 40px;
   color: red;
   font-size: 17px;
 }

@@ -1,8 +1,8 @@
 <template>
   <!-- Header -->
   <header class="header">
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-      <img src="assets/img/hamburg__menu.png" />
+    <a href="javascript:void(0);" class="icon" onclick="myHamburger()">
+      <img src="../assets/img/hamburg__menu.png" />
     </a>
     <h1>
       <a href="index.html"
@@ -22,6 +22,19 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    myHamburger() {
+      const hamburger = document.getElementById("side__bar");
+      if (hamburger.style.display === "block") {
+        hamburger.style.display = "none";
+      } else {
+        hamburger.style.display = "block";
+      }
+    },
+  },
+};
 </script>
-

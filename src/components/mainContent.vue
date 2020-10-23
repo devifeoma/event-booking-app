@@ -8,21 +8,37 @@
         </div>
         <div class="event__description">
           <span style="color: red; margin-bottom: 10px;"
-            ><cite>{{ event.dates.start.dateTime }}</cite></span
+            ><cite>{{
+              event.dates.start.dateTime | moment("dddd, MMMM Do YYYY")
+            }}</cite></span
           >
           <h3>
             <router-link :to="{ name: 'viewEvent', params: { id: event.id } }"
-              >Creating your app with Angular
+              >{{ event.name }}
             </router-link>
           </h3>
           <p>
             {{
-              truncateString(event.info, 30) ||
+              truncateString(event.info, 70) ||
                 "Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, incididu ut labore et"
             }}
           </p>
           <div class="main__content__price">
-            <span>{{event.priceRanges}}</span>
+            <!-- {{getmax(array) ? array.priceRanges[0].max : ""}} -->
+            <span>
+              $
+              {{
+                event.priceRanges && event.priceRanges.length >= 0
+                  ? event.priceRanges[0].max
+                  : ""
+              }}
+              - $
+              {{
+                event.priceRanges && event.priceRanges.length >= 0
+                  ? event.priceRanges[0].min
+                  : "Free"
+              }}</span
+            >
           </div>
         </div>
       </div>
@@ -95,6 +111,9 @@ export default {
   },
 
   methods: {
+    getMax(array) {
+      return array.priceRanges && array.priceRanges.length;
+    },
     fetchEvents() {
       axios
         .get(
