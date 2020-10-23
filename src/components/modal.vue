@@ -45,7 +45,8 @@
             </div>
 
             <p>
-              {{ event.pleaseNote }}
+              Tickets are non-refundable. If the event must be postponed due to
+              COVID-19 tickets will be valid for any of our future events.
             </p>
 
             <!-- <button type="button" class="checkout">Checkout</button> -->

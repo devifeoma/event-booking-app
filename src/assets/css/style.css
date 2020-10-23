@@ -396,6 +396,7 @@ body {
   justify-content: flex-end;
   margin-top: 40px;
   color: red;
-  font-size: 17px;
-  font-family: FLW-Regular;
+  font-size: 20px;
+  font-family: FLW-bold-italic;
+  font-weight: 600;
 }

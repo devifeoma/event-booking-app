@@ -16,7 +16,7 @@
       <div class="right-half">
         <article>
           <h1>{{ singleEvent.name }}</h1>
-          <p>{{ singleEvent.info }}. {{ singleEvent.pleaseNote }}</p>
+          <p>{{ singleEvent.info }} {{ singleEvent.pleaseNote }}</p>
           <div
             style="margin-bottom: 30px; font-family: FLW-bold-italic; font-size: 23px; color: #333333;"
           >
